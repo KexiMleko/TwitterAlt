@@ -1,0 +1,55 @@
+<div class="sidebar">
+    <div class="sidebar-container">
+        <h1 class="title">Discover</h1>
+
+        <nav class="nav-list">
+            <a mat-button class="nav-item">
+                <mat-icon>home</mat-icon>
+                <span>Feed</span>
+            </a>
+
+            <!-- categories collapsible  -->
+            <a mat-button class="nav-item collapsible" (click)="toggleCategories()">
+                <mat-icon>list</mat-icon>
+                <span>Categories</span>
+                <!-- <mat-icon [ngClass]="{'expand': categoriesExpanded}">expand_more</mat-icon> -->
+            </a>
+
+            <!-- The category list that collapses/expands -->
+            <div class="collapse-content" *ngIf="categoriesExpanded">
+                <a mat-button *ngFor="let c of categories" class="nav-item">
+                    <mat-icon>{{c.matIconName}}</mat-icon>
+                    <span>{{c.categoryName}}</span>
+                </a>
+            </div>
+
+            <p class="section-break"><span>User related</span></p>
+
+            <a mat-button class="nav-item">
+                <mat-icon>bookmark</mat-icon>
+                <span>Saved Posts</span>
+            </a>
+
+            <a mat-button class="nav-item">
+                <mat-icon>post_add</mat-icon>
+                <span>Create post</span>
+            </a>
+
+            <a mat-button class="nav-item">
+                <mat-icon>favorite</mat-icon>
+                <span>Liked Posts</span>
+            </a>
+        </nav>
+
+        <div class="preferences">
+            <a mat-button class="nav-item">
+                <mat-icon>settings</mat-icon>
+                <span>Preferences</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- <div *ngIf="showElement" class="scroll-nav">
+    Scroll to see
+</div> -->

@@ -1,0 +1,17 @@
+<div class="convo-menu-container">
+    <p class="section-break"><span>Join the Conversation</span></p>
+    <div class="convo-container" *ngFor="let convo of conversations">
+        <img class="convo-image" [src]="imgCheck(convo.convoImg)" alt="">
+        <p>{{convo.name}}</p>
+    </div>
+    <p class="section-break"><span>Group Chats</span></p>
+    <div class="convo-container" *ngFor="let convo of groupChats">
+        <img class="convo-image" [src]="imgCheck(convo.convoImg)" alt="">
+        <p>{{convo.name}}</p>
+    </div>
+    <p class="section-break"><span>Meet new People</span></p>
+    <div class="convo-container" *ngFor="let convo of newPeople">
+        <img class="convo-image" [src]="imgCheck(convo.convoImg)" alt="">
+        <p>{{convo.name}}</p>
+    </div>
+</div>

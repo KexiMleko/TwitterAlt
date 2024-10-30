@@ -1,0 +1,39 @@
+.convo-menu-container{
+    min-width: 200px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
+}
+
+.section-break {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 30px 0 10px 0;
+    font-size: 0.9rem;
+
+    span {
+        background: #fff;
+        padding: 0 10px;
+        color: rgba(0, 0, 0, 0.87);
+    }
+}   
+
+.convo-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+
+    p{
+        margin: 0 0 1px 0;
+    }
+}
+.convo-image{
+height: 40px;
+width: 40px;
+border-radius: 50%;
+}
