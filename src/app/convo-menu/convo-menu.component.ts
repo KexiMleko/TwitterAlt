@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-convo-menu',
@@ -8,28 +8,50 @@ import { Component } from '@angular/core';
   templateUrl: './convo-menu.component.html',
   styleUrl: './convo-menu.component.scss'
 })
-export class ConvoMenuComponent {
+export class ConvoMenuComponent implements OnInit {
   profilePicture: string | null = './images/defaultavatar.png'
-  conversations: [{
+  conversations: {
     name: string,
     convoImg?: string
-  }] = [{name:'thisConvo'}]
+  }[] = [{ name: 'thisConvo' }]
 
-  groupChats: [{
+  groupChats: {
     name: string,
     convoImg?: string
-  }] = [{name:'myGroup'}]
+  }[] = [{ name: 'myGroup' }]
 
-  newPeople: [{
+  newPeople: {
     name: string,
     convoImg?: string
-  }] = [{name:'thisRandom Guy'}]
+  }[] = [{ name: 'thisRandom Guy' }, { name: 'thisRandom Guy' }, { name: 'thisRandom Guy' }]
 
-  imgCheck(img:string|undefined){
-    if(img==null||''||undefined){
-      img='./images/defaultavatar.png'
+  imgCheck(img: string | undefined) {
+    if (img == null || '' || undefined) {
+      img = './images/defaultavatar.png'
     }
     return img
+  }
+
+  ngOnInit(): void {
+
+    //fetching simulation
+
+    // this.http.get(url+'/Conversations').subscribe(
+    //   {
+    //     next: (res: any) => conversations = res,
+    //     error: (err) => console.log(err)
+    //   }
+    // this.http.get(url+'/GroupChats').subscribe(
+    //   {
+    //     next: (res: any) => groupChats = res,
+    //     error: (err) => console.log(err)
+    //   }
+    //this.http.get(url+'/NewPeople').subscribe(
+    //   {
+    //     next: (res: any) => newPeople = res,
+    //     error: (err) => console.log(err)
+    //   }
+    // )
   }
 }
 

@@ -18,9 +18,11 @@
     <div class="post-card" *ngFor="let post of postService.featuredPosts">
         <!-- Header with Avatar, Title, Timestamp, and Menu Icon -->
         <div class="post-header">
-            <img class="profile_picture" [src]="commonService.imgCheck(post.userPfp)" alt="">
+            <img class="profile_picture" (click)="commonService.openUser()" [src]="commonService.imgCheck(post.userPfp)"
+                alt="">
             <div class="post-details">
-                <h3 style="font-weight: 600;color: rgb(83, 83, 83);font-size: 1rem;">{{post.username}}</h3>
+                <h3 style="font-weight: 600;color: rgb(83, 83, 83);font-size: 1rem;cursor: pointer;"
+                    (click)="commonService.openUser()">{{post.username}}</h3>
                 <p class="timestamp">{{commonService.timeAgo(post.uploadTime)}}</p>
             </div>
             <button class="menu-button">
@@ -29,7 +31,7 @@
         </div>
 
         <!-- Post Text Content -->
-        <div (click)="postService.openPost(post)" class="post-content">
+        <div (click)="postService.openPost(post)" class="post-content" style="cursor: pointer;">
             <p>
                 {{post.text.substring(0,500)}}
                 <span *ngIf="post.text.length>500">...</span>
@@ -38,7 +40,8 @@
 
         <!-- Post Images -->
         <div *ngIf="post.images[0]!=''||null||undefined" class="post-images">
-            <img [src]="post.images[0]" alt="Image" class="post-image">
+            <img class="post-image" [src]="post.images[0]" alt="Image">
+            <img class="post-image-1-5" [src]="post.images.slice(1,5)" alt="">
         </div>
 
         <!-- Post Actions (Like, Comment, Share) -->
@@ -47,7 +50,7 @@
                 <mat-icon [ngClass]="{ 'clicked': post.isLiked}">favorite</mat-icon>
                 <span>{{post.likeCount}}</span>
             </button>
-            <button>
+            <button (click)="postService.openPost(post)">
                 <mat-icon>comment</mat-icon>
                 <span>{{post.comments.length}}</span>
             </button>
@@ -63,8 +66,8 @@
             <div *ngFor="let comment of postService.getTopComments(post.comments,2)"
                 style="display: flex;flex-direction: column;border-radius: 5%;margin: 10px 0 0 0;padding: 10px;border-bottom: 1px solid rgb(0, 0, 0,0.1);">
                 <div class="post-header" style="margin-left: 10px;height: 20px;margin-top: 10px;">
-                    <img class="profile_picture" style="height: 30px;width: 30px;" [src]="commonService.imgCheck(comment.userPfp)"
-                        alt="">
+                    <img class="profile_picture" style="height: 30px;width: 30px;"
+                        [src]="commonService.imgCheck(comment.userPfp)" alt="">
                     <div class="post-details">
                         <p style="margin: 0;">{{comment.username}}</p>
                         <p class="timestamp" style="margin: 0 0 0 0;">{{commonService.timeAgo(comment.uploadTime)}}</p>
@@ -76,11 +79,15 @@
                         </button>
                         <button>
                             <mat-icon>reply</mat-icon>
+                            <span>{{ comment.replies.length }}</span>
                         </button>
                     </div>
                 </div>
-                <p style="margin: 0 0 0 10px;font-size: 0.9rem;">{{comment.text.substring(0,100)}}<span
-                        *ngIf="comment.text.length>100">...</span></p>
+                <p style="margin: 0 0 0 10px;font-size: 0.9rem;">
+                    <span class="repliedTo" *ngIf="comment.repliedTo!=null||undefined||''">AT{{comment.repliedTo}}</span>
+                    {{comment.text.substring(0,100)}}
+                    <span *ngIf="comment.text.length>100">...</span>
+                </p>
             </div>
         </div>
     </div>

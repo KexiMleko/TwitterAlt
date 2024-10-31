@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { CommonService } from '../shared/common.service';
 import { PostService } from '../shared/post.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +18,21 @@ export class HomeComponent implements OnInit {
   profilePicture: string | null = './images/defaultavatar.png'
 
 
-  constructor(public commonService:CommonService,public postService:PostService){
+  constructor(public commonService: CommonService, public postService: PostService, private http: HttpClient) {
 
   }
 
   ngOnInit(): void {
+
+    //fetch simulation
+
+    // this.http.get(environment.url+'/Featured_Posts').subscribe(
+    //   {
+    //     next: (res: any) => this.postService.featuredPosts = res,
+    //     error: (err) => console.log(err)
+    //   }
+    // )
+
     this.postService.featuredPosts = [
       {
         username: "john_doe",
@@ -36,20 +48,47 @@ export class HomeComponent implements OnInit {
         isLiked: false,
         comments: [
           {
+            username: "MirkoSvemirko",
+            uploadTime: new Date("2024-10-01T12:11:00"),
+            text: "bastardsss!",
+            likeCount: 3,
+            isLiked: false,
+            repliesToggled: false,
+            replies: [
+              {
+                username: "john_doe",
+                uploadTime: new Date("2024-10-01T12:15:00"),
+                text: "Let's keep it friendly!",
+                likeCount: 1,
+                isLiked: false,
+              },
+              {
+                username: "john_doe",
+                uploadTime: new Date("2024-10-01T12:15:00"),
+                text: "eyyy",
+                likeCount: 1,
+                isLiked: false,
+              }
+            ]
+          },
+          {
             username: "jane_smith",
             userPfp: "https://example.com/images/jane.jpg",
             uploadTime: new Date("2021-10-11T11:30:00"),
             text: "Looks amazing!",
             likeCount: 15,
             isLiked: false,
+            repliesToggled: false,
+            replies: []
           },
           {
             username: "jack_brown",
             uploadTime: new Date("2024-10-01T12:10:00"),
             text: "I'd love to visit this place!",
             likeCount: 8,
-            repliedTo: "jane_smith",
             isLiked: false,
+            repliesToggled: false,
+            replies: []
           }
         ]
       },
@@ -62,40 +101,7 @@ export class HomeComponent implements OnInit {
         shareCount: 5,
         isLiked: false,
         comments: []
-      },
-      {
-        username: "michael_b",
-        userPfp: "https://example.com/images/michael.jpg",
-        text: "Just finished a 10k run!",
-        images: [],
-        uploadTime: new Date('2024-10-03T06:15:00'),
-        likeCount: 300,
-        shareCount: 20,
-        isLiked: false,
-        comments: [
-          {
-            username: "susan_w",
-            userPfp: "https://example.com/images/susan.jpg",
-            uploadTime: new Date("2024-10-03T07:20:00"),
-            text: "Impressive, keep it up!",
-            likeCount: 25,
-            isLiked: false,
-          }
-        ]
-      },
-      {
-        username: "chris_h",
-        userPfp: "https://example.com/images/chris.jpg",
-        text: "Coding all night #developerlife",
-        images: [],
-        uploadTime: new Date('2024-10-03T02:45:00'),
-        likeCount: 200,
-        shareCount: 12,
-        isLiked: false,
-        comments: []
       }
     ];
   }
-
-  
 }

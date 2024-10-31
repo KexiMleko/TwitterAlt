@@ -47,4 +47,6 @@ export class CommonService {
   
     return "just now";
   }
+
+  openUser(){}
 }

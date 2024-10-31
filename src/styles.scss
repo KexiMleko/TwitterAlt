@@ -55,6 +55,11 @@ $primaryColor:rgb(59, 0, 59);
     width: calc(50% - 5px);
     border-radius: 10px;
   }
+
+  .post-image-1-5{
+    width: calc(20% - 5px);
+    border-radius: 10px;
+  }
   
   .post-actions {
     display: flex;
@@ -96,4 +101,9 @@ $primaryColor:rgb(59, 0, 59);
   
   .post-actions button:hover span {
     color: $primaryColor;
+  }
+
+  .repliedTo{
+    font-weight: bold;
+    color: #252525;
   }
