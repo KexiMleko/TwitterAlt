@@ -21,8 +21,30 @@
     </div>
 
     <!-- Post Images -->
-    <div *ngIf="post.images[0]!=''||null||undefined" class="post-images">
-        <img [src]="post.images[0]" alt="Image" class="post-image">
+    <div class="post-images" *ngIf="post.images[0]!=''||undefined||null">
+        <ng-container [ngSwitch]="post.images.length">
+            <!-- Single image -->
+            <div *ngSwitchCase="1" class="grid-1">
+                <img [src]="post.images[0]" [alt]="'Post image 1'" class="img-responsive">
+            </div>
+
+            <!-- Multiple images -->
+            <div *ngSwitchDefault class="grid-multiple">
+                <!-- Main large image -->
+                <div class="main-image">
+                    <img [src]="post.images[0]" [alt]="'Post image 1'" class="img-responsive">
+                </div>
+
+                <!-- Smaller images grid -->
+                <div class="secondary-images">
+                    <img *ngFor="let img of post.images.slice(1, 10); let i = index" [src]="img"
+                        [alt]="'Post image ' + (i + 2)" class="img-responsive">
+                    <div *ngIf="post.images.length > 10" class="more-indicator">
+                        +{{ post.images.length - 10 }}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
     </div>
 
     <!-- Post Actions (Like, Comment, Share) -->
@@ -82,20 +104,20 @@
                 </div>
             </div>
             <p style="margin: 0 0 0 10px;font-size: 0.9rem;padding-bottom: 10px;">
-                <span class="repliedTo" *ngIf="comment.repliedTo!=null||undefined||''">{{'@'+comment.repliedTo}}</span>
                 {{comment.text.substring(0,100)}}
                 <span *ngIf="comment.text.length>200">...</span>
             </p>
             <!-- replies -->
             <div *ngIf="comment.repliesToggled">
-                
-                <div *ngFor="let reply of comment.replies" style="padding: 15px 10px 10px 15px;">
+
+                <div class="reply-container" *ngFor="let reply of comment.replies">
                     <div class="post-header" style="margin-left: 10px;height: 20px;margin-top: 10px;">
                         <img class="profile_picture" style="height: 30px;width: 30px;"
                             [src]="commonService.imgCheck(reply.userPfp)" alt="">
                         <div class="post-details">
                             <p style="margin: 0;cursor: pointer;">{{reply.username}}</p>
-                            <p class="timestamp" style="margin: 0 0 0 0;">{{commonService.timeAgo(reply.uploadTime)}}</p>
+                            <p class="timestamp" style="margin: 0 0 0 0;">{{commonService.timeAgo(reply.uploadTime)}}
+                            </p>
                         </div>
                         <div class="post-actions" style="margin: 0 0 18px 0;">
                             <button (click)="commonService.likeContent(reply)">
@@ -108,7 +130,8 @@
                         </div>
                     </div>
                     <p style="margin: 0 0 0 10px;font-size: 0.9rem;">
-                        <span class="repliedTo" *ngIf="reply.repliedTo!=null||undefined||''">{{'@'+reply.repliedTo}}</span>
+                        <span class="repliedTo"
+                            *ngIf="reply.repliedTo!=null||reply.repliedTo!=''||reply.repliedTo!=undefined">{{'@'+reply.repliedTo}}</span>
                         {{reply.text.substring(0,100)}}
                         <span *ngIf="reply.text.length>200">...</span>
                     </p>

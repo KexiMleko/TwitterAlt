@@ -15,6 +15,7 @@ export class CommonService {
   }
 
   likeContent(content: any): void {
+    content.likeCount++
     content.isLiked = !content.isLiked;
   }
 
@@ -23,10 +24,10 @@ export class CommonService {
     if (typeof date === 'string') {
       date = new Date(date);
     }
-  
+
     const now = new Date();
     const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-  
+
     const intervals: { [key: string]: number } = {
       year: 31536000,
       month: 2592000,
@@ -36,7 +37,7 @@ export class CommonService {
       minute: 60,
       second: 1
     };
-  
+
     for (const [unit, value] of Object.entries(intervals)) {
       const count = Math.floor(seconds / value);
       if (count >= 1) {
@@ -44,9 +45,9 @@ export class CommonService {
         return count === 1 ? `1 ${unit} ago` : `${count} ${unit}s ago`;
       }
     }
-  
+
     return "just now";
   }
 
-  openUser(){}
+  openUser() { }
 }

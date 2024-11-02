@@ -33,9 +33,9 @@ export class PostComponent implements OnInit {
 
     //fetch simulation
 
-    // this.url = `${environment.url}/Post/${id}`;
+    // const url = `${environment.url}/Post/${id}`;
 
-    // this.http.get(environment.url+'/Featured_ServiceTest').subscribe(
+    // this.http.get(url).subscribe(
     //   {
     //     next: (res: any) => this.postService.openedPost = res,
     //     error: (err) => console.log(err)

@@ -1,109 +1,175 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
 
-$primaryColor:rgb(59, 0, 59);
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
+$primaryColor: rgb(59, 0, 59);
+
+
+//Post
 .post-card {
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    padding: 20px;
-    width: 50%;
-    min-width: 600px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .post-details {
-    flex-grow: 1;
-    margin-left: 15px;
-  }
-  
-  .post-details h3 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  
-  .timestamp {
-    font-size: 0.8rem;
-    color: #888;
-  }
-  
-  .menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .post-content p {
-    margin-bottom: 15px;
-  }
-  
-  .post-images {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .post-image {
-    width: calc(50% - 5px);
-    border-radius: 10px;
-  }
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 20px;
+  width: 50%;
+  min-width: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .post-image-1-5{
-    width: calc(20% - 5px);
-    border-radius: 10px;
-  }
-  
-  .post-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  }
-  
-  .post-actions button {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .post-actions button mat-icon {
-    color: #555;
-    transition: transform 0.07s ease
-  }
-  
-  .post-actions button span {
-    margin-left: 5px;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .post-actions button:hover mat-icon {
-    color: $primaryColor;
-  }
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
 
-  .post-actions button:active mat-icon {
-    color: $primaryColor;
-    transform: scale(1.1);
-  }
+.post-details {
+  flex-grow: 1;
+  margin-left: 15px;
+}
 
-  .post-actions button mat-icon.clicked {
-    color: $primaryColor; 
-  }
+.post-details h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.post-content p {
+  margin-bottom: 15px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.post-actions button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.post-actions button mat-icon {
+  color: #555;
+  transition: transform 0.07s ease
+}
+
+.post-actions button span {
+  margin-left: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.post-actions button:hover mat-icon {
+  color: $primaryColor;
+}
+
+.post-actions button:active mat-icon {
+  color: $primaryColor;
+  transform: scale(1.1);
+}
+
+.post-actions button mat-icon.clicked {
+  color: $primaryColor;
+}
+
+.post-actions button:hover span {
+  color: $primaryColor;
+}
+
+.repliedTo {
+  font-weight: bold;
+  color: #252525;
+}
+
+.comments-container {
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5%;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+//Post images
+.post-images {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px 0;
+}
+
+.img-responsive {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.grid-1 {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.grid-multiple {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  max-height: 600px;
+}
+
+.main-image {
+  height: 300px;
+}
+
+.secondary-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 4px;
+  max-height: 200px;
   
-  .post-actions button:hover span {
-    color: $primaryColor;
-  }
+}
 
-  .repliedTo{
-    font-weight: bold;
-    color: #252525;
-  }
+.secondary-images img {
+  height: 80px;
+  width: 100%;
+}
+
+.more-indicator {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+

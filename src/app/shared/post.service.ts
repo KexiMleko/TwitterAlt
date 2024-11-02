@@ -32,6 +32,7 @@ export class PostService {
         text: string,
         likeCount: number,
         isLiked: boolean,
+        repliedTo:string
       }[]
     }[],
   }[]
@@ -44,7 +45,7 @@ export class PostService {
   }
 
   getTopComments(comments: any[], comNumber: number) {
-    const nonReplyComments = comments.filter((comment) => comment.repliedTo == null || undefined || '')
+    const nonReplyComments = comments.filter((comment) => !comment.repliedTo);
     const sortedComments = comments.sort((a, b) => b.likeCount - a.likeCount);
     return sortedComments.slice(0, comNumber);
   }

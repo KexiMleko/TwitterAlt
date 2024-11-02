@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
         userPfp: "https://example.com/images/john.jpg",
         text: "Enjoying the great outdoors!",
         images: [
-          "https://example.com/images/mountain.jpg",
-          "https://example.com/images/lake.jpg"
+          "https://i.ibb.co/rwr9QB0/pizza.jpg",
+          "https://i.ibb.co/rwr9QB0/pizza.jpg"
         ],
         uploadTime: new Date("2021-10-11T11:30:00"),
         likeCount: 230,
@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit {
                 text: "Let's keep it friendly!",
                 likeCount: 1,
                 isLiked: false,
+                repliedTo:'MirkoSvemirko'
               },
               {
                 username: "john_doe",
@@ -68,6 +69,7 @@ export class HomeComponent implements OnInit {
                 text: "eyyy",
                 likeCount: 1,
                 isLiked: false,
+                repliedTo:'MirkoSvemirko'
               }
             ]
           },
@@ -96,6 +98,16 @@ export class HomeComponent implements OnInit {
         username: "alice_1990",
         text: "What a day! #sunset",
         images: [''],
+        uploadTime: new Date('2024-10-02T18:40:00'),
+        likeCount: 120,
+        shareCount: 5,
+        isLiked: false,
+        comments: []
+      },
+      {
+        username: "alice_1990",
+        text: "What a day! #sunset",
+        images: ['https://i.ibb.co/rwr9QB0/pizza.jpg', 'https://i.ibb.co/rwr9QB0/pizza.jpg', 'https://i.ibb.co/rwr9QB0/pizza.jpg', 'https://i.ibb.co/rwr9QB0/pizza.jpg', 'https://i.ibb.co/rwr9QB0/pizza.jpg', 'https://i.ibb.co/rwr9QB0/pizza.jpg'],
         uploadTime: new Date('2024-10-02T18:40:00'),
         likeCount: 120,
         shareCount: 5,

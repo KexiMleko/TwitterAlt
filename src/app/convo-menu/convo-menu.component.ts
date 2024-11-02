@@ -38,17 +38,17 @@ export class ConvoMenuComponent implements OnInit {
 
     // this.http.get(url+'/Conversations').subscribe(
     //   {
-    //     next: (res: any) => conversations = res,
+    //     next: (res: any) => this.conversations = res,
     //     error: (err) => console.log(err)
     //   }
     // this.http.get(url+'/GroupChats').subscribe(
     //   {
-    //     next: (res: any) => groupChats = res,
+    //     next: (res: any) => this.groupChats = res,
     //     error: (err) => console.log(err)
     //   }
     //this.http.get(url+'/NewPeople').subscribe(
     //   {
-    //     next: (res: any) => newPeople = res,
+    //     next: (res: any) => this.newPeople = res,
     //     error: (err) => console.log(err)
     //   }
     // )
